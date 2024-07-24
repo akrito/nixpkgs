@@ -225,7 +225,7 @@ let
       libffi.dev
       libX11.dev
       xorgproto
-      xcbproto.dev
+      xcbproto
       xorgserver.dev
 
       # Flutter can only search for certs Fedora-way.
