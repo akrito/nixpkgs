@@ -18,7 +18,7 @@
 , gnused
 , gnutar
 , gtk2, glib
-, gtk3, gtk3.dev, cmake, ninja, pkg-config
+, gtk3, cmake, ninja, pkg-config
 , gzip
 , fontconfig
 , freetype
