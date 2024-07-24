@@ -212,6 +212,15 @@ let
     name = "${drvName}-fhs-env";
     multiPkgs = pkgs: [
       ncurses5
+      gtk3.dev
+      pango.dev
+      gobject-introspection.dev
+      glib.dev
+      harfbuzz.dev
+      cairo.dev
+      gdk-pixbuf.dev
+      atk.dev
+      pcre2.dev
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
