@@ -222,6 +222,7 @@ let
       atk.dev
       pcre2.dev
       libffi.dev
+      libX11.dev
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
