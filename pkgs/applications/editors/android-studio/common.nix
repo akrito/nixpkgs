@@ -18,6 +18,7 @@
 , gnused
 , gnutar
 , gtk2, glib
+, gtk3, gtk3.dev, cmake, ninja, pkg-config
 , gzip
 , fontconfig
 , freetype
@@ -98,6 +99,10 @@ let
         --set FONTCONFIG_FILE ${fontsConf} \
         --prefix PATH : "${lib.makeBinPath [
 
+          # Flutter
+          cmake
+          ninja
+          
           # Checked in studio.sh
           coreutils
           findutils
@@ -175,6 +180,7 @@ let
 
           # For GTKLookAndFeel
           gtk2
+          gtk3
           glib
         ]}"
 
