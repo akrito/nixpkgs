@@ -19,7 +19,7 @@
 , gnutar
 , gtk2, glib
 , gtk3, cmake, ninja, pkg-config, clang, pango, gobject-introspection, harfbuzz, cairo, gdk-pixbuf, atk, pcre2, libffi
-, xorgproto, xcbproto, xorgserver, freetype
+, xorgproto, xcbproto, xorgserver
 , gzip
 , fontconfig
 , freetype
