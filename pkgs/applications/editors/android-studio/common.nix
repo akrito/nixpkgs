@@ -18,7 +18,7 @@
 , gnused
 , gnutar
 , gtk2, glib
-, gtk3, cmake, ninja, pkg-config
+, gtk3, cmake, ninja, pkg-config, clang
 , gzip
 , fontconfig
 , freetype
@@ -102,6 +102,8 @@ let
           # Flutter
           cmake
           ninja
+          pkg-config
+          clang
           
           # Checked in studio.sh
           coreutils
