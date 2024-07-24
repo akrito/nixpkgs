@@ -224,7 +224,7 @@ let
       pcre2.dev
       libffi.dev
       libX11.dev
-      xorgproto
+      # xorgproto
       xcbproto
       xorgserver.dev
 
