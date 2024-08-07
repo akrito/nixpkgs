@@ -19,7 +19,7 @@
 , gnutar
 , gtk2, glib
 , gtk3, cmake, ninja, pkg-config, clang, pango, gobject-introspection, harfbuzz, cairo, gdk-pixbuf, atk, pcre2, libffi
-, xorgproto, xcbproto, xorgserver, libepoxy
+, xorgproto, xcbproto, xorgserver, libepoxy, bzip2
 , gzip
 , fontconfig
 , freetype
@@ -230,6 +230,7 @@ let
       freetype.dev
       zlib.dev
       libepoxy.dev
+      bzip2
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
