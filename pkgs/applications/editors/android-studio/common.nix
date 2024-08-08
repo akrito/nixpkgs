@@ -272,6 +272,8 @@ let
       libxkbcommon.dev
       egl-wayland.dev
       libGL.dev
+      dbus.dev
+      libXtst
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
