@@ -19,7 +19,10 @@
 , gnutar
 , gtk2, glib
 , gtk3, cmake, ninja, pkg-config, clang, pango, gobject-introspection, harfbuzz, cairo, gdk-pixbuf, atk, pcre2, libffi
-, xorgproto, xcbproto, xorgserver, libepoxy, bzip2
+, xorgproto, xcbproto, xorgserver, libepoxy, bzip2, util-linux, brotli, libselinux, graphite2, libsepol
+, fribidi, libthai, libdatrie, libXau, libXdmcp, libXft, pixman, libjpeg, libtiff, libwebp, zstd, xz
+, libXinerama, wayland, egl-wayland
+, lerc, libdeflate, xrandr
 , gzip
 , fontconfig
 , freetype
@@ -95,6 +98,7 @@ let
       wrapProgram $out/bin/studio.sh \
         --set-default JAVA_HOME "$out/jbr" \
         --set ANDROID_EMULATOR_USE_SYSTEM_LIBS 1 \
+        --set PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/pkgconfig \
         --set QT_XKB_CONFIG_ROOT "${xkeyboard_config}/share/X11/xkb" \
         ${lib.optionalString tiling_wm "--set _JAVA_AWT_WM_NONREPARENTING 1"} \
         --set FONTCONFIG_FILE ${fontsConf} \
@@ -230,7 +234,44 @@ let
       freetype.dev
       zlib.dev
       libepoxy.dev
-      bzip2
+      bzip2.dev
+      libpng.dev
+      util-linux.dev
+      brotli.dev
+      libselinux.dev
+      graphite2.dev
+      libsepol.dev
+      fribidi.dev
+      libthai.dev
+      libdatrie.dev
+      fontconfig.dev
+      expat.dev
+      libXrender.dev
+      libxcb.dev
+      libXau.dev
+      libXdmcp.dev
+      libXft.dev
+      libXext.dev
+      pixman
+      libjpeg.dev
+      libtiff.dev
+      libwebp
+      zstd.dev
+      xz.dev
+      lerc.dev
+      libdeflate
+      libXi.dev
+      libXfixes.dev
+      xrandr
+      libXrandr.dev
+      libXcursor.dev
+      libXcomposite.dev
+      libXdamage.dev
+      libXinerama.dev
+      wayland.dev
+      libxkbcommon.dev
+      egl-wayland.dev
+      libGL.dev
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
