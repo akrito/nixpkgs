@@ -21,7 +21,7 @@
 , gtk3, cmake, ninja, pkg-config, clang, pango, gobject-introspection, harfbuzz, cairo, gdk-pixbuf, atk, pcre2, libffi
 , xorgproto, xcbproto, xorgserver, libepoxy, bzip2, util-linux, brotli, libselinux, graphite2, libsepol
 , fribidi, libthai, libdatrie, libXau, libXdmcp, libXft, pixman, libjpeg, libtiff, libwebp, zstd, xz
-, libXinerama, wayland, egl-wayland
+, libXinerama, wayland, egl-wayland, libglvnd, mesa, glibc
 , lerc, libdeflate, xrandr
 , gzip
 , fontconfig
@@ -49,6 +49,7 @@
 , libXi
 , libXrandr
 , libXrender
+, libXt
 , libXtst
 , makeWrapper
 , ncurses5
@@ -216,64 +217,68 @@ let
   fhsEnv = buildFHSEnv {
     name = "${drvName}-fhs-env";
     multiPkgs = pkgs: [
-      ncurses5
-      gtk3.dev
-      pango.dev
-      gobject-introspection.dev
-      glib.dev
-      harfbuzz.dev
-      cairo.dev
-      gdk-pixbuf.dev
       atk.dev
-      pcre2.dev
-      libffi.dev
-      libX11.dev
-      xorgproto
-      xcbproto
-      xorgserver.dev
-      freetype.dev
-      zlib.dev
-      libepoxy.dev
-      bzip2.dev
-      libpng.dev
-      util-linux.dev
       brotli.dev
-      libselinux.dev
-      graphite2.dev
-      libsepol.dev
-      fribidi.dev
-      libthai.dev
-      libdatrie.dev
-      fontconfig.dev
+      bzip2.dev
+      cairo.dev
+      dbus.dev
+      egl-wayland.dev
       expat.dev
-      libXrender.dev
-      libxcb.dev
+      fontconfig.dev
+      freetype.dev
+      fribidi.dev
+      gdk-pixbuf.dev
+      glib.dev
+      glibc.dev
+      gobject-introspection.dev
+      graphite2.dev
+      gtk3.dev
+      harfbuzz.dev
+      lerc.dev
+      libGL.dev
+      libX11.dev
       libXau.dev
+      libXcomposite.dev
+      libXcursor.dev
+      libXdamage.dev
       libXdmcp.dev
-      libXft.dev
       libXext.dev
-      pixman
+      libXfixes.dev
+      libXft.dev
+      libXi.dev
+      libXinerama.dev
+      libXrandr.dev
+      libXrender.dev
+      libXt.dev
+      libXtst
+      libdatrie.dev
+      libdeflate
+      libepoxy.dev
+      libffi.dev
+      libglvnd.dev
       libjpeg.dev
+      libpng.dev
+      libselinux.dev
+      libsepol.dev
+      libthai.dev
       libtiff.dev
       libwebp
-      zstd.dev
-      xz.dev
-      lerc.dev
-      libdeflate
-      libXi.dev
-      libXfixes.dev
-      xrandr
-      libXrandr.dev
-      libXcursor.dev
-      libXcomposite.dev
-      libXdamage.dev
-      libXinerama.dev
-      wayland.dev
+      libxcb.dev
       libxkbcommon.dev
-      egl-wayland.dev
-      libGL.dev
-      dbus.dev
-      libXtst
+      mesa.dev
+      ncurses5
+      pango.dev
+      pcre2.dev
+      pixman
+      util-linux.dev
+      wayland.dev
+      xcbproto
+      xorgproto
+      xorgserver.dev
+      xrandr
+      xz.dev
+      zlib.dev
+      zstd.dev
 
       # Flutter can only search for certs Fedora-way.
       (runCommand "fedoracert" {}
