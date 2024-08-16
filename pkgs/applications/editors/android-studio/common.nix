@@ -127,6 +127,8 @@ let
       brotli.dev
       bzip2.dev
       cairo.dev
+      clang
+      cmake
       dbus.dev
       egl-wayland.dev
       expat.dev
@@ -172,9 +174,11 @@ let
       libxcb.dev
       libxkbcommon.dev
       mesa.dev
+      ninja
       ncurses5
       pango.dev
       pcre2.dev
+      pkgconfig
       pixman
       util-linux.dev
       wayland.dev
