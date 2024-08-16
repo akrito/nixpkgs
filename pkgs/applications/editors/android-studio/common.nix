@@ -96,107 +96,13 @@ let
 
     installPhase = ''
       cp -r . $out
-      wrapProgram $out/bin/studio.sh \
-        --set-default JAVA_HOME "$out/jbr" \
-        --set ANDROID_EMULATOR_USE_SYSTEM_LIBS 1 \
-        --set PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/pkgconfig \
-        --set QT_XKB_CONFIG_ROOT "${xkeyboard_config}/share/X11/xkb" \
-        ${lib.optionalString tiling_wm "--set _JAVA_AWT_WM_NONREPARENTING 1"} \
-        --set FONTCONFIG_FILE ${fontsConf} \
-        --prefix PATH : "${lib.makeBinPath [
-
-          # Flutter
-          cmake
-          ninja
-          pkg-config
-          clang
-          
-          # Checked in studio.sh
-          coreutils
-          findutils
-          gnugrep
-          which
-          gnused
-
-          # For Android emulator
-          file
-          glxinfo
-          pciutils
-          setxkbmap
-
-          # Used during setup wizard
-          gnutar
-          gzip
-
-          # Runtime stuff
-          git
-          ps
-          usbutils
-        ]}" \
-        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [
-
-          # Crash at startup without these
-          fontconfig
-          freetype
-          libXext
-          libXi
-          libXrender
-          libXtst
-
-          # No crash, but attempted to load at startup
-          e2fsprogs
-
-          # Gradle wants libstdc++.so.6
-          stdenv.cc.cc.lib
-          # mksdcard wants 32 bit libstdc++.so.6
-          pkgsi686Linux.stdenv.cc.cc.lib
-
-          # aapt wants libz.so.1
-          zlib
-          pkgsi686Linux.zlib
-          # Support multiple monitors
-          libXrandr
-
-          # For Android emulator
-          alsa-lib
-          dbus
-          expat
-          libbsd
-          libpulseaudio
-          libuuid
-          libX11
-          libxcb
-          libxkbcommon
-          xcbutilwm
-          xcbutilrenderutil
-          xcbutilkeysyms
-          xcbutilimage
-          xcbutilcursor
-          xorg.libICE
-          xorg.libSM
-          libxkbfile
-          libXcomposite
-          libXcursor
-          libXdamage
-          libXfixes
-          libGL
-          libdrm
-          libpng
-          nspr
-          nss_latest
-          systemd
-
-          # For GTKLookAndFeel
-          gtk2
-          gtk3
-          glib
-        ]}"
-
-      # AS launches LLDBFrontend with a custom LD_LIBRARY_PATH
-      wrapProgram $(find $out -name LLDBFrontend) --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [
-        ncurses5
-        zlib
-      ]}"
+      # wrapProgram $out/bin/studio.sh \
+      #   --set-default JAVA_HOME "$out/jbr" \
+      #   --set ANDROID_EMULATOR_USE_SYSTEM_LIBS 1 \
+      #   --set PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/pkgconfig \
+      #   --set QT_XKB_CONFIG_ROOT "${xkeyboard_config}/share/X11/xkb" \
+      #   ${lib.optionalString tiling_wm "--set _JAVA_AWT_WM_NONREPARENTING 1"} \
+      #   --set FONTCONFIG_FILE ${fontsConf}
     '';
   };
 
@@ -216,7 +122,7 @@ let
   # environment is used as a work around for that.
   fhsEnv = buildFHSEnv {
     name = "${drvName}-fhs-env";
-    multiPkgs = pkgs: [
+    targetPkgs = pkgs: [
       atk.dev
       brotli.dev
       bzip2.dev
