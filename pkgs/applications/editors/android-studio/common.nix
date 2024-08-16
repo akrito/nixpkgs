@@ -97,12 +97,7 @@ let
     installPhase = ''
       cp -r . $out
       # wrapProgram $out/bin/studio.sh \
-      #   --set-default JAVA_HOME "$out/jbr" \
-      #   --set ANDROID_EMULATOR_USE_SYSTEM_LIBS 1 \
-      #   --set PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/pkgconfig \
-      #   --set QT_XKB_CONFIG_ROOT "${xkeyboard_config}/share/X11/xkb" \
-      #   ${lib.optionalString tiling_wm "--set _JAVA_AWT_WM_NONREPARENTING 1"} \
-      #   --set FONTCONFIG_FILE ${fontsConf}
+      #   --set PKG_CONFIG_PATH /usr/share/pkgconfig:/usr/lib/pkgconfig
     '';
   };
 
@@ -233,6 +228,7 @@ let
           unset ANDROID_HOME
         fi
       ''}
+      export PKG_CONFIG_PATH=/usr/share/pkgconfig:/usr/lib/pkgconfig
       exec ${fhsEnv}/bin/${drvName}-fhs-env ${androidStudio}/bin/studio.sh "$@"
     '';
     preferLocalBuild = true;
