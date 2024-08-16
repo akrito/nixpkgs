@@ -178,7 +178,7 @@ let
       ncurses5
       pango.dev
       pcre2.dev
-      pkgconfig
+      pkg-config
       pixman
       util-linux.dev
       wayland.dev
